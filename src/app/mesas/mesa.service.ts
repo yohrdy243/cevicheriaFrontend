@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Mesa} from './mesa';
+import { Observable, of } from 'rxjs';
+import { Mesa } from './mesa';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -8,14 +8,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MesaService {
-  private url:string = 'http://localhost:8085/cevicheria/mesas'
+  private url:string = 'http://localhost:8080/cevicheria/mesas'
   private url1:string = 'http://localhost:8080/cevicheria/mesas/cod'
   private httpHeaders = new HttpHeaders ({'Content-Type':'aplication/json'})
 
   constructor(private http: HttpClient) { }
 
   getMesas(): Observable<Mesa[]>{
-    return this.http.get<Mesa[]>(this.url);
+    return this.http.get<Mesa[]>(this.url).pipe(
+      map(response=> response as Mesa[])
+    );
   }
 
   createMesa(mesa: Mesa): Observable<Mesa>{

@@ -1,5 +1,8 @@
-#footerEstado{
+#footerEstadoDisponible{
   background-color: rgb(8,170,0);
+}
+#footerEstadoOcupado{
+  background-color: rgb(208,55,23);
 }
 #cardMesa{
 

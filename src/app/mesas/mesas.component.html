@@ -4,86 +4,25 @@
       <div class="col-sm-4"  *ngFor = "let mesa of mesas">
         <div class="card text-center mb-4" id="cardMesa">
           <div class="card-header">
-              <h6 class="card-title mb-0"><strong>Mesa: {{mesa.codMesa}}</strong></h6>
+            <h6 class="card-title mb-0"><strong>Mesa: {{mesa.codMesa}}</strong></h6>
           </div>
-            <div class="card-body">
-                  <img class="mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_iBKAZqp1Q4KDRdlaZS_W6IlARkvMPDIioQ&usqp=CAU" style="width:70px;">
-              <p class="card-text"><strong>Capacidad: </strong> {{mesa.capacidad}} personas</p>
+          <div class="card-body">
+            <img class="mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_iBKAZqp1Q4KDRdlaZS_W6IlARkvMPDIioQ&usqp=CAU" style="width:70px;">
+            <p class="card-text" ><strong>Capacidad: </strong> {{mesa.capacidad}} personas</p>
+
+          </div>
+          <div class="card-footer text-center" id="footerEstadoDisponible" *ngIf="!mesa.estado else elseBlock">
+            <small class="text-white">
+              <strong>Disponible</strong></small>
+          </div>
+          <ng-template #elseBlock>
+            <div class="card-footer text-center" id="footerEstadoOcupado">
+              <small class="text-white">
+                <strong>Ocupado</strong></small>
             </div>
-            <div class="card-footer text-center" id="footerEstado">
-              <small class="text-white"><strong>Estado: {{mesa.estado}}</strong></small>
-            </div>
+          </ng-template>
         </div>
-      </div>
+     </div>
     </div>
-<<<<<<< HEAD
-    <div class="card-footer bg-success text-center">
-      <small class="text-white"><strong>DISPONIBLE</strong></small>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">MESA 2</h5>
-      <div class="text-center mt-3 mb-3">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_iBKAZqp1Q4KDRdlaZS_W6IlARkvMPDIioQ&usqp=CAU" style="width:80px;">
-      </div>
-      <p class="card-text">INFORMACION DE LA MESA</p>
-    </div>
-    <div class="card-footer bg-danger  text-center">
-      <small class="text-white"><strong>OCUPADO</strong></small>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">MESA 3</h5>
-      <div class="text-center mt-3 mb-3">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_iBKAZqp1Q4KDRdlaZS_W6IlARkvMPDIioQ&usqp=CAU" style="width:80px;">
-      </div>
-      <p class="card-text">INFORMACION DE LA MESA</p>
-    </div>
-    <div class="card-footer bg-success text-center">
-      <small class="text-white"><strong>DISPONIBLE</strong></small>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">MESA 4</h5>
-      <div class="text-center mt-3 mb-3">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR_iBKAZqp1Q4KDRdlaZS_W6IlARkvMPDIioQ&usqp=CAU" style="width:80px;">
-      </div>
-      <p class="card-text">INFORMACION DE LA MESA</p>
-    </div>
-    <div class="card-footer bg-danger  text-center">
-      <small class="text-white"><strong>OCUPADO</strong></small>
-    </div>
-  </div>
-</div>
-
-
-<div class="card-deck mt-4">
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-  </div>
-  <div class="card-footer bg-danger  text-center">
-    <small class="text-white"><strong>OCUPADO</strong></small>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-  </div>
-  <div class="card-footer bg-success text-center">
-    <small class="text-white"><strong>DISPONIBLE</strong></small>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-=======
->>>>>>> 97742b6da79fc4be0c62a4cc00cdcb79e5ad0424
   </div>
 </div>
