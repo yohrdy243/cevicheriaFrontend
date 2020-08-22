@@ -41,6 +41,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     NgbModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
     NgbModule
   ],
