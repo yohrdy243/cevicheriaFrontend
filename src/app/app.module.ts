@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+
 import {HeaderComponent} from './header/header.component'
 import {FooterComponent} from './footer/footer.component';
 import { PlatosComponent } from './platos/platos.component';
@@ -14,6 +17,11 @@ import { LineapedidobebidaComponent } from './lineapedidobebida/lineapedidobebid
 import { LineapedidoplatoComponent } from './lineapedidoplato/lineapedidoplato.component';
 import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoagregado.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
+const routes: Routes = [
+  {path: '', redirectTo: '/Mesas', pathMatch: 'full'},
+  {path:'Mesas', component: MesasComponent}
+]
 
 @NgModule({
   declarations: [
@@ -31,6 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
   ],
   imports: [
     BrowserModule,
+    NgbModule,
+    RouterModule.forRoot(routes),
     NgbModule
   ],
   providers: [],
