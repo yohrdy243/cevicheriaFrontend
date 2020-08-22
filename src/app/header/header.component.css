@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #navPrincipal{
   background: rgba(13,37,171,1);
   background: -moz-linear-gradient(left, rgba(13,37,171,1) 0%, rgba(0,132,247,1) 100%);
@@ -7,4 +8,15 @@
   background: -ms-linear-gradient(left, rgba(13,37,171,1) 0%, rgba(0,132,247,1) 100%);
   background: linear-gradient(to right, rgba(13,37,171,1) 0%, rgba(0,132,247,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d25ab', endColorstr='#0084f7', GradientType=1 );
+=======
+.navbar{
+  background: rgba(0,45,179,1);
+  background: -moz-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,45,179,1)), color-stop(100%, rgba(0,194,146,1)));
+  background: -webkit-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
+  background: -o-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
+  background: -ms-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
+  background: linear-gradient(to right, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002db3', endColorstr='#00c292', GradientType=1 );
+>>>>>>> 184245487f977f5b8d9793e27a35ae88ee1befb1
 }

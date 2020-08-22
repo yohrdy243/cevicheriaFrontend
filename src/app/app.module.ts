@@ -12,6 +12,7 @@ import { PlatosComponent } from './platos/platos.component';
 import { BebidasComponent } from './bebidas/bebidas.component';
 import { AgregadosComponent } from './agregados/agregados.component';
 import { MesasComponent } from './mesas/mesas.component';
+import { MesaService} from './mesas/mesa.service';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { LineapedidobebidaComponent } from './lineapedidobebida/lineapedidobebida.component';
 import { LineapedidoplatoComponent } from './lineapedidoplato/lineapedidoplato.component';
@@ -43,7 +44,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule
   ],
-  providers: [],
+  providers: [
+    MesaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
