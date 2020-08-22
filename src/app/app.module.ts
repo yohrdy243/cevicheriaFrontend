@@ -12,7 +12,8 @@ import { MesasComponent } from './mesas/mesas.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { LineapedidobebidaComponent } from './lineapedidobebida/lineapedidobebida.component';
 import { LineapedidoplatoComponent } from './lineapedidoplato/lineapedidoplato.component';
-import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoagregado.component'
+import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoagregado.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoa
     LineapedidoagregadoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
