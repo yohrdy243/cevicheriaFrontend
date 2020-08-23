@@ -17,11 +17,18 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 import { LineapedidobebidaComponent } from './lineapedidobebida/lineapedidobebida.component';
 import { LineapedidoplatoComponent } from './lineapedidoplato/lineapedidoplato.component';
 import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoagregado.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MesaPedidoComponent} from './mesas/mesa-pedido/mesa-pedido.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/Mesas', pathMatch: 'full'},
-  {path:'Mesas', component: MesasComponent}
+  {path:'Mesas', component: MesasComponent},
+  {path:'Mesa/:id', component: MesaPedidoComponent},
+  {path:'Pedidos', component:PedidosComponent},
+  {path:'Platos', component:PlatosComponent},
+  {path:'Bebidas', component:BebidasComponent},
+  {path:'Agregados', component:AgregadosComponent}
 ]
 
 @NgModule({
@@ -36,7 +43,8 @@ const routes: Routes = [
     PedidosComponent,
     LineapedidobebidaComponent,
     LineapedidoplatoComponent,
-    LineapedidoagregadoComponent
+    LineapedidoagregadoComponent,
+    MesaPedidoComponent
   ],
   imports: [
     BrowserModule,

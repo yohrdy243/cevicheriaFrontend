@@ -2,9 +2,14 @@
   background-color: rgb(8,170,0);
 }
 #footerEstadoOcupado{
-  background-color: rgb(208,55,23);
+  background-color: rgb(220,0,0);
 }
 #cardMesa{
-
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .3);
+  position: relative;
+  bottom: 0px;
+  transition: bottom .5s;
+}
+#cardMesa:hover{
+    bottom: 10px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
 }

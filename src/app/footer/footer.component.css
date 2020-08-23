@@ -1,4 +1,4 @@
-
+/*
 #footer{
   background: rgba(0,45,179,1);
   background: -moz-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
@@ -8,4 +8,7 @@
   background: -ms-linear-gradient(left, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
   background: linear-gradient(to right, rgba(0,45,179,1) 0%, rgba(0,194,146,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002db3', endColorstr='#00c292', GradientType=1 );
+}
+*/
+#footer{
 }

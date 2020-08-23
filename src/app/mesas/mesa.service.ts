@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class MesaService {
-  private url:string = 'http://localhost:8080/cevicheria/mesas'
+  private url:string = 'http://localhost:8085/cevicheria/mesas'
   private url1:string = 'http://localhost:8080/cevicheria/mesas/cod'
   private httpHeaders = new HttpHeaders ({'Content-Type':'aplication/json'})
 
