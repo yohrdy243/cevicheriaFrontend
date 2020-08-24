@@ -3,12 +3,15 @@ import { Observable, of } from 'rxjs';
 import { Bebida } from './bebida';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {TipoBebida} from './TipoBebida';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BebidaService {
-  private url:string = 'http://localhost:8080/cevicheria/bebidas'
+  private url:string = 'http://localhost:8085/cevicheria/bebidas'
+  private urlTipo:string = 'http://localhost:8085/cevicheria/tipoBebida'
+  private urlPorTipo:string='http://localhost:8085/cevicheria/bebidas/tipo'
   private httpHeaders = new HttpHeaders ({'Content-Type':'aplication/json'})
 
   constructor(private http: HttpClient) { }
@@ -16,6 +19,17 @@ export class BebidaService {
   getBebidas(): Observable<Bebida[]>{
     return this.http.get<Bebida[]>(this.url).pipe(
       map(response=> response as Bebida[])
+    );
+  }
+  getTipoBebida():Observable<TipoBebida[]>{
+    return this.http.get<TipoBebida[]>(this.urlTipo).pipe(
+      map(response=>response as TipoBebida[])
+    );
+  }
+
+  getBebidaPorTipo(id:number): Observable<Bebida[]>{
+    return this.http.get<Bebida[]>(`${this.urlPorTipo}/${id}`).pipe(
+      map(response => response as Bebida[])
     );
   }
 

@@ -20,6 +20,8 @@ import { LineapedidoagregadoComponent } from './lineapedidoagregado/lineapedidoa
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MesaPedidoComponent} from './mesas/mesa-pedido/mesa-pedido.component';
 
+import {FormsModule} from '@angular/forms';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/Mesas', pathMatch: 'full'},
@@ -50,6 +52,7 @@ const routes: Routes = [
     BrowserModule,
     NgbModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes),
     NgbModule
   ],
