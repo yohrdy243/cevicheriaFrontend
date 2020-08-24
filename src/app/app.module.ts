@@ -22,6 +22,8 @@ import {MesaPedidoComponent} from './mesas/mesa-pedido/mesa-pedido.component';
 
 import {FormsModule} from '@angular/forms';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/Mesas', pathMatch: 'full'},
@@ -30,7 +32,9 @@ const routes: Routes = [
   {path:'Pedidos', component:PedidosComponent},
   {path:'Platos', component:PlatosComponent},
   {path:'Bebidas', component:BebidasComponent},
+  {path:'Bebidas/tipo', component:BebidasComponent},
   {path:'Agregados', component:AgregadosComponent}
+
 ]
 
 @NgModule({
@@ -52,6 +56,7 @@ const routes: Routes = [
     BrowserModule,
     NgbModule,
     HttpClientModule,
+    NgxPaginationModule,
     FormsModule,
     RouterModule.forRoot(routes),
     NgbModule

@@ -12,7 +12,7 @@ export class BebidaService {
   private url:string = 'http://localhost:8085/cevicheria/bebidas'
   private urlTipo:string = 'http://localhost:8085/cevicheria/tipoBebida'
   private urlPorTipo:string='http://localhost:8085/cevicheria/bebidas/tipo'
-  private httpHeaders = new HttpHeaders ({'Content-Type':'aplication/json'})
+  private httpHeaders = new  HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +36,10 @@ export class BebidaService {
   createBebida(bebida: Bebida): Observable<Bebida>{
     return this.http.post<Bebida>(this.url,bebida,{headers: this.httpHeaders})
 
+  }
+
+  createTipoBebida(tipoBebida: TipoBebida): Observable<TipoBebida>{
+    return this.http.post<TipoBebida>(this.urlTipo,tipoBebida,{headers:this.httpHeaders});
   }
 
   getBebida(id:number): Observable<Bebida>{

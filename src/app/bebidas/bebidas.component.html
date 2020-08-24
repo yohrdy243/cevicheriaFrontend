@@ -1,50 +1,137 @@
 <div class="container mt-5 mb-5">
 
-  <div class="card mb-3">
-    <div class="card-body">
-      <div class="row">
-          <div class="col-sm-3">
-            <select class="custom-select" [(ngModel)]="tipoOrden" (ngModelChange)='cambiarTipoOrden($event)'>
-                  <option class ="text-center" value="0" selected>Todos</option>
-                  <option *ngFor="let tipo of tipoBebidas" [value]="tipo.id">
-                    {{tipo.tipo}}</option>
-            </select>
+      <ul class="nav nav-tabs" id="headerBebida" role="tablist">
+        <li class="nav-item">
+          <button class="btn nav-link" [routerLink]="['/Bebidas']" id="bebida-tab" data-toggle="tab" href="#bebida" role="tab" aria-controls="bebida" aria-selected="true">Bebida</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn nav-link" [routerLink]="['/Bebidas/tipo']" id="tipoBebida-tab" data-toggle="tab" href="#tipoBebida" role="tab" aria-controls="tipoBebida" aria-selected="false">Tipo de Bebida</button>
+        </li>
+      </ul>
 
+      <div class="tab-content mt-4" id="headerBebidaContent">
+        <div class="tab-pane fade show active" id="bebida" role="tabpanel" aria-labelledby="bebida-tab">
+
+      <div class="container">
+        <div class="card mb-3 ">
+          <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                  <select class="custom-select" [(ngModel)]="tipoOrden" (ngModelChange)='cambiarTipoOrden($event)'>
+                        <option class ="text-center" value="0" selected>Todos</option>
+                        <option *ngFor="let tipo of tipoBebidas" [value]="tipo.id">
+                          {{tipo.tipo}}</option>
+                  </select>
+
+                </div>
+            </div>
           </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header text-center">
+            <strong>LISTA DE BEBIDAS</strong>
+          </div>
+          <div class="card-body">
+            <div class="container table-responsive">
+              <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                  <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">TIPO</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">DESCRIPCIÓN</th>
+                    <th scope="col">EDITAR</th>
+                    <th scope="col">ELIMINAR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bebida of bebidas" class="text-center">
+                    <td><strong>{{bebida.idBebida}}</strong></td>
+                    <td>{{bebida.nombre}}</td>
+                    <td>{{bebida.tipo.tipo}}</td>
+                    <td>s/. {{bebida.precio}}</td>
+                    <td>{{bebida.descripcion}}</td>
+                    <td><button type="button" class="btn btn-warning" name="button"><strong>Editar</strong></button></td>
+                    <td><button type="button" class="btn btn-danger" name="button"><strong>Eliminar</strong></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="tipoBebida" role="tabpanel" aria-labelledby="tipoBebida-tab">
+
+          <div class="card">
+            <div class="card-header text-center">
+              <strong>TIPO DE BEBIDAS</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                  <div class="col-md-4">
+                    <div class="card">
+                      <div class="card-header text-center">
+                          <strong>FORMULARIO</strong>
+                      </div>
+                      <div class="card-body">
+
+                        <form (ngSubmit)="create()">
+                          <div class="form-group">
+                            <label for="txtTipoBebida">Tipo de Bebida</label>
+                            <div class="input-group mb-2">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"> </div>
+                              </div>
+                              <input type="text" class="form-control" [(ngModel)]="tipoDeBebida.tipo" name="tipo" placeholder="Nombre">
+                            </div>
+                          </div>
+                          <div class="form-group text-center">
+                            <button class="btn btn-dark" role="button"><strong>Guardar</strong></button>
+                          </div>
+                        </form>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="container card table-responsive">
+                      <div class="card-body mt-2">
+                        <table class="table table-hover table-bordered">
+                          <thead class="thead-dark">
+                          <tr class="text-center">
+                            <th scope="col">ID</th>
+                            <th scope="col">TIPO</th>
+                            <th scope="col">EDITAR</th>
+                            <th scope="col">ELIMINAR</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let tipo of tipoBebidas | paginate: {itemsPerPage: cantidadPaginacion, currentPage: p }" class="text-center">
+                              <td><strong>{{tipo.id}}</strong></td>
+                              <td>{{tipo.tipo}}</td>
+                              <td><button type="button" class="btn btn-warning" name="button"><strong>Editar</strong></button></td>
+                              <td><button type="button" class="btn btn-danger" name="button"><strong>Eliminar</strong></button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="container text-center">
+                          <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""
+                          maxSize="6" directionLinks="true" ></pagination-controls>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
       </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header text-center">
-      <strong>LISTA DE BEBIDAS</strong>
-    </div>
-    <div class="card-body">
-      <div class="container table-responsive">
-        <table class="table table-hover table-bordered">
-          <thead class="thead-dark">
-            <tr class="text-center">
-              <th scope="col">ID</th>
-              <th scope="col">NOMBRE</th>
-              <th scope="col">TIPO</th>
-              <th scope="col">PRECIO</th>
-              <th scope="col">DESCRIPCIÓN</th>
-              <th scope="col">EDITAR</th>
-              <th scope="col">ELIMINAR</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let bebida of bebidas" class="text-center">
-              <td><strong>{{bebida.idBebida}}</strong></td>
-              <td>{{bebida.nombre}}</td>
-              <td>{{bebida.tipo.tipo}}</td>
-              <td>s/. {{bebida.precio}}</td>
-              <td>{{bebida.descripcion}}</td>
-              <td><button type="button" class="btn btn-warning" name="button"><strong>Editar</strong></button></td>
-              <td><button type="button" class="btn btn-danger" name="button"><strong>Eliminar</strong></button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  </div>
-    </div>
-  </div>
+</div>
