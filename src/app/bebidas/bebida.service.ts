@@ -34,8 +34,7 @@ export class BebidaService {
   }
 
   createBebida(bebida: Bebida): Observable<Bebida>{
-    return this.http.post<Bebida>(this.url,bebida,{headers: this.httpHeaders})
-
+    return this.http.post<Bebida>(this.url,bebida,{headers:this.httpHeaders});
   }
 
   createTipoBebida(tipoBebida: TipoBebida): Observable<TipoBebida>{
@@ -44,6 +43,10 @@ export class BebidaService {
 
   getBebida(id:number): Observable<Bebida>{
     return this.http.get<Bebida>(`${this.url}/${id}`)
+  }
+
+  getTipoDeBebida(id): Observable<TipoBebida>{
+    return this.http.get<TipoBebida>(`${this.urlTipo}/${id}`)
   }
 
   updateBebida(bebida: Bebida): Observable<Bebida>{

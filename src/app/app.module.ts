@@ -33,6 +33,8 @@ const routes: Routes = [
   {path:'Platos', component:PlatosComponent},
   {path:'Bebidas', component:BebidasComponent},
   {path:'Bebidas/tipo', component:BebidasComponent},
+  {path:'Bebidas/nuevo', component:BebidasComponent},
+  {path:'Bebidas/tipo/:id', component:BebidasComponent},
   {path:'Agregados', component:AgregadosComponent}
 
 ]

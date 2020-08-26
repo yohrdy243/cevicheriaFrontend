@@ -33,6 +33,9 @@
             <strong>LISTA DE BEBIDAS</strong>
           </div>
           <div class="card-body">
+            <div class="container text-right mb-3">
+              <button class="btn btn-dark" (click) ="abrirModal(modalBebida)"  [routerLink]="['/Bebidas/nuevo']">Registrar Bebida</button>
+            </div>
             <div class="container table-responsive">
               <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
@@ -47,7 +50,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let bebida of bebidas" class="text-center">
+                  <tr *ngFor="let bebida of bebidas | paginate: {itemsPerPage: cantidadPaginacionBebida, currentPage: paginaBebida }" class="text-center">
                     <td><strong>{{bebida.idBebida}}</strong></td>
                     <td>{{bebida.nombre}}</td>
                     <td>{{bebida.tipo.tipo}}</td>
@@ -58,6 +61,10 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="container text-center" id="paginacionBebida">
+                <pagination-controls (pageChange)="paginaBebida = $event" previousLabel="" nextLabel=""
+                maxSize="6" directionLinks="true" ></pagination-controls>
+            </div>
             </div>
           </div>
         </div>
@@ -72,34 +79,9 @@
               <strong>TIPO DE BEBIDAS</strong>
             </div>
             <div class="card-body">
-              <div class="row">
-                  <div class="col-md-4">
-                    <div class="card">
-                      <div class="card-header text-center">
-                          <strong>FORMULARIO</strong>
-                      </div>
-                      <div class="card-body">
-
-                        <form (ngSubmit)="create()">
-                          <div class="form-group">
-                            <label for="txtTipoBebida">Tipo de Bebida</label>
-                            <div class="input-group mb-2">
-                              <div class="input-group-prepend">
-                                <div class="input-group-text"> </div>
-                              </div>
-                              <input type="text" class="form-control" [(ngModel)]="tipoDeBebida.tipo" name="tipo" placeholder="Nombre">
-                            </div>
-                          </div>
-                          <div class="form-group text-center">
-                            <button class="btn btn-dark" role="button"><strong>Guardar</strong></button>
-                          </div>
-                        </form>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-md-8">
+              <div class="text-right mb-3">
+                <button class="btn btn-dark" (click) ="abrirModal(modalTipoBebida)">Registrar Tipo</button>
+              </div>
                     <div class="container card table-responsive">
                       <div class="card-body mt-2">
                         <table class="table table-hover table-bordered">
@@ -112,26 +94,103 @@
                           </tr>
                           </thead>
                           <tbody>
-                            <tr *ngFor="let tipo of tipoBebidas | paginate: {itemsPerPage: cantidadPaginacion, currentPage: p }" class="text-center">
+                            <tr *ngFor="let tipo of tipoBebidas" class="text-center">
                               <td><strong>{{tipo.id}}</strong></td>
                               <td>{{tipo.tipo}}</td>
-                              <td><button type="button" class="btn btn-warning" name="button"><strong>Editar</strong></button></td>
+                              <td><button type="button" class="btn btn-warning" name="button"
+                                (click) ="abrirModalTipo(modalTipoBebida,tipo.id)" ><strong>Editar</strong></button></td>
                               <td><button type="button" class="btn btn-danger" name="button"><strong>Eliminar</strong></button></td>
                             </tr>
                           </tbody>
                         </table>
-                        <div class="container text-center">
-                          <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""
-                          maxSize="6" directionLinks="true" ></pagination-controls>
-                      </div>
                     </div>
                   </div>
-              </div>
-            </div>
           </div>
 
         </div>
-
-
       </div>
 </div>
+</div>
+
+<!-- ******Modal Bebidas ******-->
+
+<ng-template #modalBebida>
+  <div class="modal-header">
+    <h6 class="modal-title" id="infraccionModal">NUEVA BEBIDA</h6>
+    <button type="button" class="close" (click)=cerrarModal(modalBebida) [routerLink]="['/Bebidas']" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="createBebida(modalBebida)">
+    <div class="container">
+      <div class="form-row align-items-center">
+          <div class="col-md-12 mb-3" >
+             <label class="" >Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="bebida.nombre"  placeholder="Nombre" name="nombre" required>
+          </div>
+      </div>
+        <div class="form-row align-items-center">
+          <div class="col-md-6 mb-3" >
+             <label class="">Tipo</label>
+             <select class="custom-select" [(ngModel)]="tipo" name="tipo">
+                   <option *ngFor="let tipo of tipoBebidas" [value]="tipo">
+                     {{tipo.tipo}}</option>
+             </select>
+          </div>
+          <div class="col-md-6 mb-3" >
+             <label class="" >Precio</label>
+            <input type="text" class="form-control" [(ngModel)]="bebida.precio" placeholder="s/. Precio" name="precio" required>
+          </div>
+        </div>
+        <div class="form-row align-items-center">
+            <div class="col-md-12 mb-3" >
+               <label class="" >Descripción</label>
+               <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripcion"
+                [(ngModel)]="bebida.descripcion" name="descripcion" required></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 mb-3" >
+                <button role="button" class="btn btn-danger" name="button">Guardar</button>
+            </div>
+            <div class="col-md-3 mb-3" >
+                <button type="button" class="btn btn-dark" (click)=cerrarModal(modalBebida) [routerLink]="['/Bebidas']"  name="button">Cancelar</button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- ******Modal Tipo de Bebidas ******-->
+
+<ng-template #modalTipoBebida>
+  <div class="modal-header">
+    <h6 class="modal-title" id="infraccionModal">FORMULARIO</h6>
+    <button type="button" class="close" (click)=cerrarModal(modalTipoBebida) [routerLink]="['/Bebidas/tipo']" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="container">
+      <form (ngSubmit)="create(modalTipoBebida)">
+        <div class="form-group">
+          <label for="txtTipoBebida">Tipo de Bebida</label>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"> </div>
+            </div>
+            <input type="text" class="form-control" [(ngModel)]="tipoDeBebida.tipo" name="tipo" placeholder="Nombre">
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-dark" role="button"><strong>Guardar</strong></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</ng-template>
